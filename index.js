@@ -33930,26 +33930,20 @@ function BeeSwarmSimulator(DATA){
 
     document.body.appendChild(hacksMessage)
 
-    function updateHackMessage(){
+function updateHackMessage(){
 
-        if(!player || !player.quests){
-            return
-        }
-
-    let completedFirstQuest = true
-
-    for(let i in player.quests){
-
-        if(player.quests[i].name === "Sunflower Start"){
-            completedFirstQuest = false
-            break
-        }
+    if(!player){
+        return
     }
 
-    hacksMessage.style.display = completedFirstQuest ? "none" : "block"
+    if(player.honey < 1000){
+        hacksMessage.style.display = "block"
+    } else {
+        hacksMessage.style.display = "none"
     }
+}
 
-    setInterval(updateHackMessage, 500000)
+    setInterval(updateHackMessage, 500)
 
 
 
