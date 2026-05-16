@@ -33949,7 +33949,7 @@ function BeeSwarmSimulator(DATA){
     hacksMessage.style.display = completedFirstQuest ? "none" : "block"
     }
 
-    setInterval(updateHackMessage, 500)
+    setInterval(updateHackMessage, 500000)
 
 
 
