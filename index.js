@@ -595,6 +595,63 @@ function BeeSwarmSimulator(DATA){
     let honeyAmount=document.getElementById('honeyAmount')
     let pollenAmount2=document.getElementById('pollenAmount2')
     let honeyAmount2=document.getElementById('honeyAmount2')
+    // HACKS MESSAGE
+    let hacksMessage = document.createElement("div")
+
+    hacksMessage.innerHTML = "COMPLETE FIRST QUEST FOR HACKS"
+
+    hacksMessage.style.position = "fixed"
+    hacksMessage.style.top = "70px"
+    hacksMessage.style.left = "50%"
+    hacksMessage.style.transform = "translateX(-50%)"
+
+    hacksMessage.style.padding = "10px 18px"
+    hacksMessage.style.background = "rgba(0,0,0,0.75)"
+    hacksMessage.style.border = "2px solid red"
+    hacksMessage.style.borderRadius = "12px"
+
+    hacksMessage.style.color = "#ff4444"
+    hacksMessage.style.fontSize = "18px"
+    hacksMessage.style.fontWeight = "900"
+    hacksMessage.style.fontFamily = "Arial"
+
+    hacksMessage.style.textShadow = "0 0 10px red"
+    hacksMessage.style.boxShadow = "0 0 20px red"
+
+    hacksMessage.style.zIndex = "999999"
+
+    document.body.appendChild(hacksMessage)
+        function updateHackMessage(){
+
+        let completed = false
+
+        for(let i in player.quests){
+
+            if(player.quests[i].name === "Sunflower Start"){
+
+                completed = false
+                break
+            }
+        }
+
+        // if quest NOT found anymore, player completed it
+        if(player.quests.length > 0){
+
+            let hasQuest = false
+
+            for(let i in player.quests){
+
+                if(player.quests[i].name === "Sunflower Start"){
+
+                    hasQuest = true
+                }
+            }
+
+            completed = !hasQuest
+        }
+
+        hacksMessage.style.display = completed ? "none" : "block"
+    }
     let healthBar=document.getElementById('healthBar')
     let capacityBar=document.getElementById('capacityBar')
     let inventoryButton=document.getElementById('inventoryButton')
@@ -33870,7 +33927,7 @@ function BeeSwarmSimulator(DATA){
         items.basicEgg.amount=1
         player.updateInventory()
 
-        let tut=['Welcome to Bee Swarm Simulator!',30000,'DO FIRST QUEST FOR HACKS!!',5000,'Click the egg icon on the bar on','the left to open your inventory!',4000,'Click on the Basic Egg to select it!',4000,'Hover your mouse over a hive slot','and click to hatch it!',4000,'Collect pollen in fields with your bee!',4000,'After filling up your bag, stand near','your hive to convert the pollen into honey!',4000,'Use honey to buy more bee eggs and new tools!',5000,'Talk to bears and complete their quests!',3000,'Have fun!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!'],t=1000
+        let tut=['Welcome to Bee Swarm Simulator!',5000,'Click the egg icon on the bar on','the left to open your inventory!',4000,'Click on the Basic Egg to select it!',4000,'Hover your mouse over a hive slot','and click to hatch it!',4000,'Collect pollen in fields with your bee!',4000,'After filling up your bag, stand near','your hive to convert the pollen into honey!',4000,'Use honey to buy more bee eggs and new tools!',5000,'Talk to bears and complete their quests!',3000,'Have fun!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!',3000,'DO FIRST QUEST FOR HACKS!!'],t=1000
 
         for(let i in tut){
 
@@ -34732,6 +34789,8 @@ function BeeSwarmSimulator(DATA){
         ctx.drawImage(gl.canvas,0,0)
         
         textRenderer.draw()
+        
+        updateHackMessage()
         
         player.updateUI()
         
