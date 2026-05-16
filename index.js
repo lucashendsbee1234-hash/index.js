@@ -1612,7 +1612,7 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.strawberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,500)
                 player.addEffect('redBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
@@ -1646,7 +1646,7 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.blueberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,500)
                 player.addEffect('blueBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
@@ -1682,7 +1682,7 @@ function BeeSwarmSimulator(DATA){
 
                 items.treat.amount+=objects.bees.length*4+10
                 items.pineapple.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,500)
                 player.honey+=250*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((250*numBees)+'')+' Honey')
@@ -1708,7 +1708,7 @@ function BeeSwarmSimulator(DATA){
                 player.extraInfo.honeyDispenser=Math.ceil(Date.now())
 
                 player.honey+=objects.bees.length*objects.bees.length*objects.bees.length+100
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,500)
                 player.addMessage('+'+MATH.addCommas((objects.bees.length*objects.bees.length*objects.bees.length+100)+'')+' Honey')
                 player.addMessage('Activated x5 "Haste"')
             }
@@ -2012,7 +2012,7 @@ function BeeSwarmSimulator(DATA){
                 for(let i in objects.bees)numBees++
 
                 items.coconut.amount+=(numBees*0.25+3)|0
-                player.addEffect('haste',false,false,undefined,5)
+                player.addEffect('haste',false,false,undefined,500)
                 player.addEffect('coconutFieldBoost',false,false,undefined,1)
                 player.honey+=235312*numBees
                 player.updateInventory()
