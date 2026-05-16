@@ -34790,7 +34790,21 @@ function BeeSwarmSimulator(DATA){
         
         textRenderer.draw()
         
-        updateHackMessage()
+        function updateHackMessage(){
+
+        let completed = false
+
+        // check completed quests
+        if(player.completedQuests){
+
+            if(player.completedQuests.includes("Sunflower Start")){
+
+                completed = true
+            }
+        }
+
+        hacksMessage.style.display = completed ? "none" : "block"
+}
         
         player.updateUI()
         
