@@ -595,63 +595,6 @@ function BeeSwarmSimulator(DATA){
     let honeyAmount=document.getElementById('honeyAmount')
     let pollenAmount2=document.getElementById('pollenAmount2')
     let honeyAmount2=document.getElementById('honeyAmount2')
-    // HACKS MESSAGE
-    let hacksMessage = document.createElement("div")
-
-    hacksMessage.innerHTML = "COMPLETE FIRST QUEST FOR HACKS"
-
-    hacksMessage.style.position = "fixed"
-    hacksMessage.style.top = "70px"
-    hacksMessage.style.left = "50%"
-    hacksMessage.style.transform = "translateX(-50%)"
-
-    hacksMessage.style.padding = "10px 18px"
-    hacksMessage.style.background = "rgba(0,0,0,0.75)"
-    hacksMessage.style.border = "2px solid red"
-    hacksMessage.style.borderRadius = "12px"
-
-    hacksMessage.style.color = "#ff4444"
-    hacksMessage.style.fontSize = "18px"
-    hacksMessage.style.fontWeight = "900"
-    hacksMessage.style.fontFamily = "Arial"
-
-    hacksMessage.style.textShadow = "0 0 10px red"
-    hacksMessage.style.boxShadow = "0 0 20px red"
-
-    hacksMessage.style.zIndex = "999999"
-
-    document.body.appendChild(hacksMessage)
-        function updateHackMessage(){
-
-        let completed = false
-
-        for(let i in player.quests){
-
-            if(player.quests[i].name === "Sunflower Start"){
-
-                completed = false
-                break
-            }
-        }
-
-        // if quest NOT found anymore, player completed it
-        if(player.quests.length > 0){
-
-            let hasQuest = false
-
-            for(let i in player.quests){
-
-                if(player.quests[i].name === "Sunflower Start"){
-
-                    hasQuest = true
-                }
-            }
-
-            completed = !hasQuest
-        }
-
-        hacksMessage.style.display = completed ? "none" : "block"
-    }
     let healthBar=document.getElementById('healthBar')
     let capacityBar=document.getElementById('capacityBar')
     let inventoryButton=document.getElementById('inventoryButton')
@@ -33967,6 +33910,47 @@ function BeeSwarmSimulator(DATA){
 
     player.updateGear()
 
+    // HACKS MESSAGE
+        let hacksMessage = document.createElement("div")
+
+        hacksMessage.innerHTML = "COMPLETE FIRST QUEST FOR HACKS"
+
+        hacksMessage.style.position = "fixed"
+        hacksMessage.style.top = "70px"
+        hacksMessage.style.left = "50%"
+        hacksMessage.style.transform = "translateX(-50%)"
+        hacksMessage.style.padding = "10px 18px"
+        hacksMessage.style.background = "rgba(0,0,0,0.75)"
+        hacksMessage.style.border = "2px solid red"
+        hacksMessage.style.borderRadius = "12px"
+        hacksMessage.style.color = "#ff4444"
+        hacksMessage.style.fontSize = "18px"
+        hacksMessage.style.fontWeight = "900"
+        hacksMessage.style.zIndex = "999999"
+
+        document.body.appendChild(hacksMessage)
+
+        function updateHackMessage(){
+
+            if(!player || !player.quests){
+                return
+            }
+
+            let hasQuest = false
+
+            for(let i in player.quests){
+
+                if(player.quests[i].name === "Sunflower Start"){
+                    hasQuest = true
+                    break
+                }
+            }
+
+            hacksMessage.style.display = hasQuest ? "block" : "none"
+        }
+
+        setInterval(updateHackMessage, 500)
+
 
     //bamb
     objects.mobs.push(new BugMob([-50,3,61],{minX:-52,maxX:-52+21,minZ:50,maxZ:50+13,minY:1,maxY:7},2,15,'rhinoBeetle','mob_bamb1'))
@@ -34022,7 +34006,7 @@ function BeeSwarmSimulator(DATA){
     if(uiCanvas.requestPointerLock)
         uiCanvas.requestPointerLock()
 
-    window.setInterval(()=>{SAVE_GAME();player.addMessage('Game Autosaved!')},30000)
+    window.setInterval(()=>{SAVE_GAME();player.addMessage('Modded Game Autosaved!')},30000)
 
     function setGlobalPuffshroomSpawn(){
 
@@ -34789,22 +34773,6 @@ function BeeSwarmSimulator(DATA){
         ctx.drawImage(gl.canvas,0,0)
         
         textRenderer.draw()
-        
-        function updateHackMessage(){
-
-        let completed = false
-
-        // check completed quests
-        if(player.completedQuests){
-
-            if(player.completedQuests.includes("Sunflower Start")){
-
-                completed = true
-            }
-        }
-
-        hacksMessage.style.display = completed ? "none" : "block"
-}
         
         player.updateUI()
         
