@@ -33936,17 +33936,17 @@ function BeeSwarmSimulator(DATA){
             return
         }
 
-        let hasQuest = false
+    let completedFirstQuest = true
 
-        for(let i in player.quests){
+    for(let i in player.quests){
 
-            if(player.quests[i].name === "Sunflower Start"){
-                hasQuest = true
-                break
-            }
+        if(player.quests[i].name === "Sunflower Start"){
+            completedFirstQuest = false
+            break
         }
+    }
 
-        hacksMessage.style.display = hasQuest ? "block" : "none"
+    hacksMessage.style.display = completedFirstQuest ? "none" : "block"
     }
 
     setInterval(updateHackMessage, 500)
