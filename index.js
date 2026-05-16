@@ -1612,14 +1612,14 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.strawberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,8)
+                player.addEffect('haste',false,false,undefined,15)
                 player.addEffect('redBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((1000*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas((numBees+3)+'')+' Strawberries')
                 player.addMessage('Activated x10 "Red Boost"')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x15 "Haste"')
             }
         },
         blueberry_dispenser:{
@@ -1646,14 +1646,14 @@ function BeeSwarmSimulator(DATA){
                 }
 
                 items.blueberry.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,8)
+                player.addEffect('haste',false,false,undefined,15)
                 player.addEffect('blueBoost',false,false,undefined,10)
                 player.honey+=1000*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((1000*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas((numBees+3)+'')+' Blueberries')
                 player.addMessage('Activated x10 "Blue Boost"')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x15 "Haste"')
             }
         },
 
@@ -1682,13 +1682,13 @@ function BeeSwarmSimulator(DATA){
 
                 items.treat.amount+=objects.bees.length*4+10
                 items.pineapple.amount+=numBees+3
-                player.addEffect('haste',false,false,undefined,8)
+                player.addEffect('haste',false,false,undefined,15)
                 player.honey+=250*(numBees+1)
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((250*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas((objects.bees.length*4+10)+'')+' Treats')
                 player.addMessage('+'+MATH.addCommas((numBees+3)+'')+' Pineapples')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x15 "Haste"')
             }
         },
         honey_dispenser:{
@@ -1708,9 +1708,9 @@ function BeeSwarmSimulator(DATA){
                 player.extraInfo.honeyDispenser=Math.ceil(Date.now())
 
                 player.honey+=objects.bees.length*objects.bees.length*objects.bees.length+100
-                player.addEffect('haste',false,false,undefined,8)
+                player.addEffect('haste',false,false,undefined,15)
                 player.addMessage('+'+MATH.addCommas((objects.bees.length*objects.bees.length*objects.bees.length+100)+'')+' Honey')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x15 "Haste"')
             }
         },
         scam_dispenser:{
@@ -2012,13 +2012,13 @@ function BeeSwarmSimulator(DATA){
                 for(let i in objects.bees)numBees++
 
                 items.coconut.amount+=(numBees*0.25+3)|0
-                player.addEffect('haste',false,false,undefined,8)
+                player.addEffect('haste',false,false,undefined,15)
                 player.addEffect('coconutFieldBoost',false,false,undefined,1)
                 player.honey+=235312*numBees
                 player.updateInventory()
                 player.addMessage('+'+MATH.addCommas((235312*numBees)+'')+' Honey')
                 player.addMessage('+'+MATH.addCommas(((numBees*0.25+3)|0)+'')+' Coconuts')
-                player.addMessage('Activated x5 "Haste"')
+                player.addMessage('Activated x15 "Haste"')
                 player.addMessage('Activated x1 Coconut Field Boost')
             }
         },
