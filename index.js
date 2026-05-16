@@ -33910,6 +33910,47 @@ function BeeSwarmSimulator(DATA){
 
     player.updateGear()
 
+    // HACKS MESSAGE
+    let hacksMessage = document.createElement("div")
+
+    hacksMessage.innerHTML = "COMPLETE FIRST QUEST FOR HACKS"
+
+    hacksMessage.style.position = "fixed"
+    hacksMessage.style.top = "70px"
+    hacksMessage.style.left = "50%"
+    hacksMessage.style.transform = "translateX(-50%)"
+    hacksMessage.style.padding = "10px 18px"
+    hacksMessage.style.background = "rgba(0,0,0,0.75)"
+    hacksMessage.style.border = "2px solid red"
+    hacksMessage.style.borderRadius = "12px"
+    hacksMessage.style.color = "#ff4444"
+    hacksMessage.style.fontSize = "18px"
+    hacksMessage.style.fontWeight = "900"
+    hacksMessage.style.zIndex = "999999"
+
+    document.body.appendChild(hacksMessage)
+
+    function updateHackMessage(){
+
+        if(!player || !player.quests){
+            return
+        }
+
+        let hasQuest = false
+
+        for(let i in player.quests){
+
+            if(player.quests[i].name === "Sunflower Start"){
+                hasQuest = true
+                break
+            }
+        }
+
+        hacksMessage.style.display = hasQuest ? "block" : "none"
+    }
+
+    setInterval(updateHackMessage, 500)
+
 
 
     //bamb
